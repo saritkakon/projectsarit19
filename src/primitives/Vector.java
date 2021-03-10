@@ -14,6 +14,7 @@ public Vector(double x, double y, double z) {
 		throw new IllegalArgumentException("cannot create vector with 0, 0, 0");
 	this.head = new Point3D(x, y, z);
 }
+
 public Vector(Point3D point) {
 	this.head = point;
 }
