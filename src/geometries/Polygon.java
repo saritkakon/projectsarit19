@@ -1,6 +1,5 @@
 package geometries;
 
-
 import java.util.List;
 import primitives.*;
 import static primitives.Util.*;
@@ -71,7 +70,7 @@ public class Polygon implements Geometry {
 		// polygon is convex ("kamur" in Hebrew).
 		boolean positive = edge1.crossProduct(edge2).dotProduct(n) > 0;
 		for (int i = 1; i < vertices.length; ++i) {
-			// Test that the point is in the same plane as calculated originally
+			// Test that the point is in the same plane as calculated originally;
 			if (!isZero(vertices[i].subtract(vertices[0]).dotProduct(n)))
 				throw new IllegalArgumentException("All vertices of a polygon must lay in the same plane");
 			// Test the consequent edges have

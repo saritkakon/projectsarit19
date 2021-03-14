@@ -22,7 +22,12 @@ public Tube(Ray axicRay, double radius) {
 }
 @Override
 public Vector getNormal(Point3D point) {
-	return null;
+	Vector v = axicRay.getDir();
+	Point3D P0 = axicRay.getP0();
+	double t = v.dotProduct(point.subtract(P0));
+	Point3D o = P0.add(v.scale(t));
+	Vector result = point.subtract(o).normalize();
+	return result;
 }
 
 }

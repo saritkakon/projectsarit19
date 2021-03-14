@@ -36,4 +36,21 @@ public boolean equals(Object obj) {
 		return false;
 	return true;
 }
+
+public Vector getDir() {
+	return dir;
+}
+
+public void setDir(Vector dir) {
+	this.dir = dir;
+}
+
+public Point3D getP0() {
+	return p0;
+}
+
+public void setP0(Point3D p0) {
+	this.p0 = p0;
+}
+
 }

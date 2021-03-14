@@ -27,7 +27,6 @@ public class Point3D {
 		double x1 = this.x.coord;
 		double y1 = this.y.coord;
 		double z1 = this.z.coord;
-
 		double x2 = other.x.coord;
 		double y2 = other.y.coord;
 		double z2 = other.z.coord;
