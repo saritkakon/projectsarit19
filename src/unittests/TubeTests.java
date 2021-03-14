@@ -14,7 +14,6 @@ import primitives.Vector;
 
 /**
  * @author saritkakon
- *
  */
 public class TubeTests {
 
