@@ -1,13 +1,18 @@
 package primitives;
 
 public class Vector {
-Point3D head;
+	Point3D head;
+	
 
-public Vector(Coordinate x, Coordinate y, Coordinate z) {
-	if(new Point3D(x, y, z).equals(Point3D.ZERO))
+
+/**public Vector(Coordinate x, Coordinate y, Coordinate z) {
+	super();
+	 Point3D p= new Point3D(x, y, z);
+	 if(p.equals(Point3D.ZERO));
 		throw new IllegalArgumentException("cannot create vector with 0, 0, 0");
-	this.head = new Point3D(x, y, z);
+	this.head = p;
 }
+*/
 
 public Vector(double x, double y, double z) {
 	if(new Point3D(x, y, z).equals(Point3D.ZERO))

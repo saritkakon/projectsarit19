@@ -28,6 +28,6 @@ public class TubeTests {
 				new Vector(0, -1, 0).normalize());
 	}
 /**
- * 
+ * Check if the normal obtained is the normal I expected to receive
  */
 }

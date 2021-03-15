@@ -32,7 +32,7 @@ public class PlaneTests {
 
 	}
 	/**
-	 * 
+	 * Checks whether the resulting vector is the normalized vector we expected to receive
 	 */
 
 }

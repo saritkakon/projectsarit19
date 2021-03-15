@@ -1,9 +1,9 @@
 package primitives;
 
 public class Point3D {
-	Coordinate x;
-	Coordinate y;
-	Coordinate z;
+	 final Coordinate x;
+	final Coordinate y;
+	final Coordinate z;
 	public static Point3D ZERO = new Point3D(0, 0, 0);
 /**
  * A Point3D constant that represents the beginning of the axes.
@@ -16,13 +16,11 @@ public class Point3D {
 		this.y = new Coordinate(y);
 		this.z = new Coordinate(z);
 	}
-	
-	public Point3D(Coordinate x, Coordinate y, Coordinate z) {
-		this.x = x;
-		this.y = y;
-		this.z = z;
+	public Point3D( Coordinate x, Coordinate y, Coordinate z) {
+		this.x = (x);
+		this.y = (y);
+		this.z = (z);
 	}
-
 	public Vector subtract(Point3D other) {
 		double x1 = this.x.coord;
 		double y1 = this.y.coord;
@@ -39,15 +37,8 @@ public class Point3D {
  * @return
  */
 	public Point3D add(Vector other) {
-		double x1 = this.x.coord;
-		double y1 = this.y.coord;
-		double z1 = this.z.coord;
 
-		double x2 = other.head.x.coord;
-		double y2 = other.head.y.coord;
-		double z2 = other.head.z.coord;
-
-		return new Point3D(x2 + x1, y2 + y1, z2 + z1);
+		return new Point3D(this.x.coord +other.getHead().x.coord ,this.y.coord +other.getHead().y.coord , this.z.coord +other.getHead().z.coord );
 	}
 	/**
 	 * The function adds a vector to a point and returns a new point
