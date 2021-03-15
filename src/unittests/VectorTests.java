@@ -25,6 +25,9 @@ public class VectorTests {
 		Vector vCopyNormalize = vCopy.normalize();
 		assertTrue("ERROR: normalize() function creates a new vector", vCopy == vCopyNormalize);
 		assertEquals("ERROR: normalize() result is not a unit vector", vCopyNormalize.length(), 1, 0.00001);
+		/**
+		 * Checking if the unit vector was received as we expected to receive
+		 */
 	}
 
 	/**
@@ -36,7 +39,11 @@ public class VectorTests {
 		Vector u = v.normalized();
 		assertFalse("ERROR: normalizated() function does not create a new vector", u == v);
 		assertEquals(u.length(), 1, 0.00001);
+		/**
+		 * Checks whether the resulting vector is the normalized vector we expected to receive
+		 */
 	}
+
 
 	/**
 	 * Test method for {@link primitives.Vector#add(primitives.Vector)}.
@@ -45,6 +52,9 @@ public class VectorTests {
 	public void testAdd() {
 		Point3D p1 = new Point3D(1, 2, 3);
 		assertEquals("ERROR: Point + Vector does not work correctly", p1.add(new Vector(-1, -2, -3)), Point3D.ZERO);
+		/**
+		 * Checks whether the resulting vector is the normalized vector we expected to receive
+		 */
 	}
 
 	/**
@@ -55,6 +65,9 @@ public class VectorTests {
 		Point3D p1 = new Point3D(1, 2, 3);
 		assertEquals("ERROR: Point - Point does not work correctly", new Point3D(2, 3, 4).subtract(p1),
 				new Vector(1, 1, 1));
+		/**
+		 * Checks whether the resulting vector is the normalized vector we expected to receive
+		 */
 	}
 
 	/**
@@ -66,6 +79,9 @@ public class VectorTests {
 		assertEquals(new Vector(2, 2, 2), v1.scale(2));
 		Vector v4 = new Vector(1, 2, 3);
 		assertEquals(new Vector(10, 20, 30), v4.scale(10));
+		/**
+		 * Checks whether the resulting vector is the normalized vector we expected to receive
+		 */
 	}
 
 	/**
@@ -107,6 +123,9 @@ public class VectorTests {
 		Vector v3 = new Vector(0, 3, -2);
 		assertEquals("ERROR: dotProduct() for orthogonal vectors is not zero", v1.dotProduct(v3), 0, 0.00001);
 		assertEquals("ERROR: dotProduct() wrong value", v1.dotProduct(v2), -28, 0.00001);
+		/**
+		 * Checks whether the resulting vector is the normalized vector we expected to receive
+		 */
 	}
 
 	/**
@@ -116,6 +135,9 @@ public class VectorTests {
 	public void testLengthSquared() {
 		Vector v1 = new Vector(1, 2, 3);
 		assertEquals("ERROR: lengthSquared() wrong value", v1.lengthSquared(), 14, 0.00001);
+		/**
+		 * Checks whether the function calculates the length of the vector squared as we expected
+		 */
 	}
 
 	/**
@@ -125,6 +147,9 @@ public class VectorTests {
 	public void testLength() {
 		Vector v = new Vector(0, 3, 4);
 		assertEquals("ERROR: length() wrong value", v.length(), 5, 0.00001);
+		/**
+		 * Checks whether the function calculates the length of the vector as we expected
+		 */
 	}
 
 }

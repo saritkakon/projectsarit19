@@ -28,5 +28,7 @@ public class TriangleTests {
 		Triangle triangle = new Triangle(p1, p2, p3);
 		assertEquals("ERROR: getNormalPoint() returns worng normal", triangle.getNormal(p1), new Vector(0, 0, 1));
 	}
-
+	/**
+	 * Checks whether the resulting vector is the normalized vector we expected to receive
+	 */
 }

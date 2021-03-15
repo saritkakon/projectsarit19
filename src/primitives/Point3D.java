@@ -16,11 +16,22 @@ public class Point3D {
 		this.y = new Coordinate(y);
 		this.z = new Coordinate(z);
 	}
+	/**
+	 * constructor receiving three doubles 
+	 * @param x
+	 * @param y
+	 * @param z
+	 */
 	public Point3D( Coordinate x, Coordinate y, Coordinate z) {
 		this.x = (x);
 		this.y = (y);
 		this.z = (z);
 	}
+	/**
+	 * constructor receiving three coordinate
+	 * @param other
+	 * @return
+	 */
 	public Vector subtract(Point3D other) {
 		double x1 = this.x.coord;
 		double y1 = this.y.coord;

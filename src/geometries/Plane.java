@@ -11,6 +11,12 @@ public class Plane implements Geometry {
 		this.q0 = q0;
 		this.normal = normal.normalized();
 	}
+	/**
+	 * constructor receiving normalized vector and point
+	 * @param p1
+	 * @param p2
+	 * @param p3
+	 */
 
 	public Plane(Point3D p1, Point3D p2, Point3D p3) {
 	        // if p1=p2 or p1=p3 - an exception will be thrown
@@ -21,6 +27,10 @@ public class Plane implements Geometry {
 	        normal = v1.crossProduct(v2).normalize();
 	        q0 = p1;
 	    }
+	/**
+	 * constructor receiving three points
+	 * @return
+	 */
 
 
 	public Point3D getQ0() {

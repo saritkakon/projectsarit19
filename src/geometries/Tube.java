@@ -7,6 +7,9 @@ private Ray axicRay;
 private double radius;
 public Ray getAxicRay() {
 	return axicRay;
+	/**
+	 * 
+	 */
 }
 public double getRadius() {
 	return radius;
@@ -29,5 +32,8 @@ public Vector getNormal(Point3D point) {
 	Vector result = point.subtract(o).normalize();
 	return result;
 }
+/**
+ * A function that calculates the normal according to the formula
+ */
 
 }

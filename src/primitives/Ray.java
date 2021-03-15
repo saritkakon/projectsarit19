@@ -10,6 +10,9 @@ public Ray(Vector dir, Point3D p0) {
 	this.dir = dir.normalize();
 	this.p0 = p0;
 }
+/**
+ * constructor that receiving vector and point
+ */
 
 @Override
 public String toString() {

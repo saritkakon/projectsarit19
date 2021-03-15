@@ -13,18 +13,28 @@ public class Vector {
 	this.head = p;
 }
 */
+	/**
+	 * constructor receiving three coordinates
+	 * @param x
+	 * @param y
+	 * @param z
+	 */
 
 public Vector(double x, double y, double z) {
 	if(new Point3D(x, y, z).equals(Point3D.ZERO))
 		throw new IllegalArgumentException("cannot create vector with 0, 0, 0");
 	this.head = new Point3D(x, y, z);
 }
+/**
+ * constructor receiving three doubles
+ * @param point
+ */
 
 public Vector(Point3D point) {
 	this.head = point;
 }
 /**
- * 
+ * constructor receiving point
  */
 @Override
 public boolean equals(Object obj) {
@@ -87,6 +97,11 @@ public double dotProduct (Vector other) {
 	double z2 = other.head.z.coord;
 	return(x1*x2+y1*y2+z1*z2);
 }
+/**
+ * A function that receives two vectors and makes a scalar product between them and returns a new vector
+ * @param other
+ * @return
+ */
 public Vector crossProduct (Vector other) {
 	double x1 = this.head.x.coord;
 	double y1 = this.head.y.coord;
@@ -104,17 +119,32 @@ public Vector crossProduct (Vector other) {
 public double lengthSquared() {
 	return dotProduct(this);
 }
-
+/**
+ * A function that calculates the length of the vector squared and returns it
+ * @return
+ */
 public double length() {
 	return Math.sqrt(lengthSquared());
 }
+/**
+ * A function that calculates the length of the vector and returns it
+ * @return
+ */
 public Vector normalize() {
 	this.head = scale(1/length()).head;
 	return this;
 }
+/**
+ * A function that normalizes the vector and returns the original vector after the normalization operation
+ * @return
+ */
 public Vector normalized() {
 	return new Vector(this.head).normalize();
 }
+/**
+ * A function that normalizes the vector and returns a new normalized vector
+ * @return
+ */
 
 public Point3D getHead() {
 	return this.head;

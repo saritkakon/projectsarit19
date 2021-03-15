@@ -12,6 +12,9 @@ public class Sphere implements Geometry {
 		this.center = center;
 		this.radius = radius;
 	}
+	/**
+	 * A function that calculates the center point of the sphere and the radius of the sphere
+	 */
 
 	@Override
 	public String toString() {

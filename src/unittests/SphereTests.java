@@ -26,5 +26,8 @@ public class SphereTests {
 		assertEquals("ERROR: getNormalPoint() returns worng normal", sphere.getNormal(new Point3D(1, 0, 0)),
 				new Vector(0, -1, -1).normalize());
 	}
+	/*8
+	 * Checks whether the resulting vector is the normalized vector we expected to receive
+	 */
 
 }
