@@ -22,13 +22,13 @@ public class PlaneTests {
 	 */
 	@Test
 	public void testGetNormalPoint3D() {
-		Plane plane = new Plane(new Point3D(0, 2, 4), new Vector(4, 4, 4));
+		Plane plane = new Plane(new Point3D(0, 2, 4), new Vector(1, 0, 0 ));
 		assertEquals("ERROR: getNormalPoint() returns worng normal", plane.getNormal(new Point3D(0, 2, 4)),
-				new Vector(4, 4, 4));
+				new Vector(1, 0,0));
 
-		plane = new Plane(new Point3D(0, 1, 0), new Point3D(0, 0, 1), new Point3D(1, 0, 0));
-		assertEquals("ERROR: getNormalPoint() returns worng norma", plane.getNormal(new Point3D(1, 0, 0)),
-				new Vector(1, 0, 0));
+		plane = new Plane(new Point3D(2, 3, 0), new Point3D(2, 1, 0), new Point3D(1, 2, 0));
+		assertEquals("ERROR: getNormalPoint() returns worng normal", plane.getNormal(new Point3D(1, 2, 0)),
+				new Vector(0, 0, -1));
 
 	}
 	/**
