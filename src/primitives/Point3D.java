@@ -105,5 +105,9 @@ public class Point3D {
 	public String toString() {
 		return "Point3D [x=" + x + ", y=" + y + ", z=" + z + "]";
 	}
+	public double getX() {
+		// TODO Auto-generated method stub
+		return this.x.coord;
+	}
 
 }

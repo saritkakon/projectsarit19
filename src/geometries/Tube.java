@@ -1,4 +1,6 @@
 package geometries;
+import java.util.List;
+
 import primitives.Point3D;
 import primitives.Ray;
 import primitives.Vector;
@@ -35,5 +37,10 @@ public Vector getNormal(Point3D point) {
 /**
  * A function that calculates the normal according to the formula
  */
+@Override
+public List<Point3D> findIntsersections(Ray ray) {
+	// TODO Auto-generated method stub
+	return null;
+}
 
 }

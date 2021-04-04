@@ -5,14 +5,13 @@ public class Vector {
 	
 
 
-/**public Vector(Coordinate x, Coordinate y, Coordinate z) {
+public Vector(Coordinate x, Coordinate y, Coordinate z) {
 	super();
 	 Point3D p= new Point3D(x, y, z);
-	 if(p.equals(Point3D.ZERO));
+	 if(p.equals(Point3D.ZERO))
 		throw new IllegalArgumentException("cannot create vector with 0, 0, 0");
 	this.head = p;
 }
-*/
 	/**
 	 * constructor receiving three coordinates
 	 * @param x
