@@ -17,7 +17,7 @@ public class Camera {
     /**
      * constructor
      *
-     * @param p
+     * @param s
      * @param vup
      * @param vto
      */
