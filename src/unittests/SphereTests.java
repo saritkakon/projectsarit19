@@ -25,7 +25,7 @@ public class SphereTests {
      */
     @Test
     public void testGetNormal() {
-        Sphere sphere = new Sphere(5, new Point3D(1, 1, 1));
+        Sphere sphere = new Sphere(new Point3D(1, 1, 1), 5);
         assertEquals("ERROR: getNormalPoint() returns worng normal", sphere.getNormal(new Point3D(1, 0, 0)),
                 new Vector(0, -1, -1).normalize());
     }
@@ -40,7 +40,7 @@ public class SphereTests {
      */
     @Test
     public void testFindIntersections() {
-        Sphere sphere = new Sphere(1d, new Point3D(1, 0, 0));
+        Sphere sphere = new Sphere(new Point3D(1, 0, 0), 1d);
         /**
          * Checks that the point of intersection with the sphere is the point we expected to get
          */

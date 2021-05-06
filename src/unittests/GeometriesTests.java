@@ -24,7 +24,7 @@ public class GeometriesTests {
         Ray ray = new Ray(new Vector(0, 0, 0.5), new Point3D(0, 0, 2));
         assertNull("Geometries is empty", geometries.findIntsersections(ray));
 
-        geometries.add(new Sphere(1, new Point3D(10, 0, 0)),
+        geometries.add(new Sphere(new Point3D(10, 0, 0), 1),
                 new Triangle(new Point3D(1, 0, 1), new Point3D(1, 1, -1), new Point3D(1, -1, -1)),
                 new Plane(new Point3D(-5, 0, 0), new Vector(1, 0, 0)));
 

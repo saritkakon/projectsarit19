@@ -64,21 +64,21 @@ public class ViewPlaneTests {
         // First test case, 2 intersection points
         Camera camera = new Camera(new Point3D(0.0, 0.0, 0.0), new Vector(0.0, 0.0, -1.0), new Vector(0.0, 1.0, 0.0))
                 .setDistance(1).setViewPlaneSize(WIDTH, HEIGHT);
-        Sphere sphere = new Sphere(1, new Point3D(0, 0, -3));
+        Sphere sphere = new Sphere(new Point3D(0, 0, -3), 1);
         assertEquals(2, getNumberOfIntersections(camera, sphere));
 
         // Second test case, 18 intersection points
         camera = new Camera(new Point3D(0.0, 0.0, 0.5), new Vector(0.0, 0.0, -1.0), new Vector(0.0, 1.0, 0.0))
                 .setDistance(1).setViewPlaneSize(WIDTH, HEIGHT);
-        sphere = new Sphere(2.5, new Point3D(0, 0, -2.5));
+        sphere = new Sphere(new Point3D(0, 0, -2.5), 2.5);
         assertEquals(18, getNumberOfIntersections(camera, sphere));
 
         // Third test case, 9 intersection points
-        sphere = new Sphere(4, new Point3D(0, 0, 0));
+        sphere = new Sphere(new Point3D(0, 0, 0), 4);
         assertEquals(9, getNumberOfIntersections(camera, sphere));
 
         // Fourth test case, 0 intersection points
-        sphere = new Sphere(0.5, new Point3D(0, 0, 1));
+        sphere = new Sphere(new Point3D(0, 0, 1), 0.5);
         assertEquals(0, getNumberOfIntersections(camera, sphere));
     }
 

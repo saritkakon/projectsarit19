@@ -1,7 +1,11 @@
 package geometries;
 
+
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+
+import geometries.Intersectable.GeoPoint;
 import primitives.*;
 import static primitives.Util.*;
 
@@ -11,7 +15,7 @@ import static primitives.Util.*;
  * 
  * @author Dan
  */
-public class Polygon implements Geometry {
+public class Polygon extends Geometry {
 	/**
 	 * List of polygon's vertices
 	 */
@@ -71,7 +75,7 @@ public class Polygon implements Geometry {
 		// polygon is convex ("kamur" in Hebrew).
 		boolean positive = edge1.crossProduct(edge2).dotProduct(n) > 0;
 		for (int i = 1; i < vertices.length; ++i) {
-			// Test that the point is in the same plane as calculated originally;
+			// Test that the point is in the same plane as calculated originally
 			if (!isZero(vertices[i].subtract(vertices[0]).dotProduct(n)))
 				throw new IllegalArgumentException("All vertices of a polygon must lay in the same plane");
 			// Test the consequent edges have
@@ -87,24 +91,40 @@ public class Polygon implements Geometry {
 		return plane.getNormal();
 	}
 
+	/**
+	 * Create a list of points that keeps the points of intersection with the ray
+	 * Create a new plane by three points
+	 * Insert in the list the number of points of intersection of the plane with the ray
+	 */
 	@Override
-	public List<Point3D> findIntsersections(Ray ray) {
+	public List<GeoPoint> findGeoIntersections(Ray ray) {
 		Plane plane = new Plane(vertices.get(0), vertices.get(1), vertices.get(2));
-		List<Point3D> result = plane.findIntsersections(ray);
-
+		List<GeoPoint> result = plane.findGeoIntersections(ray);
+     /**
+      * When there are no points of intersection
+      */
 		if(result == null)
 			return null;
-
+     /**
+      * Builds a list of vectors 
+      * and for each vector makes an end point less a start
+      */
 		List<Vector> v = new LinkedList<>();
 		for (int i = 0; i < vertices.size(); i++) {
 			v.add(vertices.get(i).subtract(ray.getP0()));
 		}
-
+     /**
+      * Define two variables that preserve whether the vector is positive or negative
+      * Goes through all the vectors and makes a vector product between them and normalizes
+      * do a scalar product with the direction
+      */
 		int positive = 0, negative = 0;
 		for (int i = 0; i < vertices.size(); i++) {
 			Vector N = v.get(i).crossProduct(v.get((i+1)% vertices.size())).normalize();
 			double scalar = N.dotProduct(ray.getDir());
-
+     /**
+      * Summarized the results of the vectors whether positive negative or zero 
+      */
 			if(Util.isZero(scalar))
 				return null;
 
@@ -113,10 +133,17 @@ public class Polygon implements Geometry {
 			else
 				negative++;
 		}
-
+     /**
+      * If both positive and negative are not equal to zero
+      * Otherwise returns the number of points of intersection
+      */
 		if(positive != 0 && negative != 0)
 			return null;
-		else
+		else {
+			for(GeoPoint point: result)
+				point.geometry = this;
 			return result;
+		}
 	}
+
 }

@@ -1,25 +1,37 @@
 package primitives;
 
 import java.util.List;
+import geometries.Intersectable.GeoPoint;
 
 public class Ray {
-	Vector dir;
+	private Point3D p0;
+	private Vector dir;
 
-	Point3D p0;
+	public Point3D getP0() {
+		return p0;
+	}
 
-	public Ray(Vector dir, Point3D p0) {
-		super();
-		this.dir = dir.normalize();
+	public void setP0(Point3D p0) {
 		this.p0 = p0;
 	}
 
-	/**
-	 * constructor that receiving vector and point
-	 */
+	public Vector getDir() {
+		return dir;
+	}
 
-	@Override
-	public String toString() {
-		return "Ray [dir=" + dir + ", p0=" + p0 + "]";
+	public void setDir(Vector dir) {
+		this.dir = dir;
+	}
+
+	/**
+	 * constructor
+	 * 
+	 * @param p0
+	 * @param dir
+	 */
+	public Ray(Vector dir, Point3D p0) {
+		this.p0 = p0;
+		this.dir = dir.normalize();
 	}
 
 	@Override
@@ -44,48 +56,61 @@ public class Ray {
 		return true;
 	}
 
-	public Vector getDir() {
-		return dir;
+	@Override
+	public String toString() {
+		return "Ray [p0=" + p0 + ", dir=" + dir + "]";
 	}
-
-	public void setDir(Vector dir) {
-		this.dir = dir;
-	}
-
-	public Point3D getP0() {
-		return p0;
-	}
-
-	public void setP0(Point3D p0) {
-		this.p0 = p0;
-	}
-
+	
 	public Point3D getPoint(double t) {
-		return p0.add(dir.scale(t));
+    	return p0.add(dir.scale(t));
 	}
-
-	/**
-	 * Finds the point closest to the ray
-	 * 
-	 * @param list
-	 * @return the closes point
-	 */
+/**
+ * Finds the point closest to the ray
+ * @param list
+ * @return the closes point
+ */
 	public Point3D findClosestPoint(List<Point3D> list) {
-		if (list.size() == 0)
+		if(list.size() == 0)
 			return null;
-
+		
 		Point3D min = list.get(0);
 		double distance = p0.distance(min);
-
-		for (int i = 1; i < list.size(); i++) {
+		
+		for(int i = 1; i < list.size(); i++) {
 			double temp = p0.distance(list.get(i));
-			if (temp < distance) {
+			if(temp < distance)
+			{
 				min = list.get(i);
 				distance = temp;
 			}
 		}
-
+		
 		return min;
 	}
+	/**
+	 * Finds the point closest to the ray
+	 * @param list
+	 * @return the closes point
+	 */
+	public GeoPoint getClosestGeoPoint(List<GeoPoint> list) {
+		if(list.size() == 0)
+			return null;
+		
+		GeoPoint min = list.get(0);
+		double distance = p0.distance(min.point);
+		
+		for(int i = 1; i < list.size(); i++) {
+			double temp = p0.distance(list.get(i).point);
+			if(temp < distance)
+			{
+				min = list.get(i);
+				distance = temp;
+			}
+		}
+		
+		return min;
+	}
+		
+
 
 }
