@@ -7,7 +7,7 @@ import primitives.Point3D;
 import primitives.Ray;
 
 /**
- * @author hilab
+ * @author saritkakon
  *
  */
 public interface Intersectable {
