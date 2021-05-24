@@ -34,6 +34,17 @@ public class Ray {
 		this.p0 = p0;
 		this.dir = dir.normalize();
 	}
+	
+	 
+/**
+ * The function receives a point, vector direction and normal
+  and makes a vector product between the normal and the direction vector and an angle is obtained.
+  if the angle is positive the delta is positive and the direction of the equator is positive and if the angle 
+  is negative the delta is negative and the direction of the vector is negative.
+ * @param point
+ * @param v
+ * @param n
+ */
 
 	public Ray(Point3D point, Vector v, Vector n) {
 		Vector delta = n.scale(n.dotProduct(v) > 0 ? DELTA : -DELTA);

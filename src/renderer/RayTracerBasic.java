@@ -144,12 +144,12 @@ public class RayTracerBasic extends RayTracerBase {
 		return true;
 	}
 
-	private Ray constructingReflectedRay(Vector n, Vector v, GeoPoint geopoint) {
+	private Ray constructingReflectedRay(Vector n, Vector v, GeoPoint geopoint) {//ray return bake hishtakfut
 		Vector r = v.subtract(n.scale(n.dotProduct(v) * 2));
 		return new Ray(geopoint.point, r, n);
 	}
 
-	private Ray constructingRefractedRay(Vector n, Vector v, GeoPoint geopoint) {
+	private Ray constructingRefractedRay(Vector n, Vector v, GeoPoint geopoint) {//ray pass throw the geometry-shkifut
 		return new Ray(geopoint.point, v, n);
 	}
 
