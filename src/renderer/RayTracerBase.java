@@ -1,5 +1,7 @@
 package renderer;
 
+import java.util.List;
+
 import primitives.Color;
 import primitives.Ray;
 import scene.Scene;
@@ -11,6 +13,6 @@ public RayTracerBase(Scene scene) {
 	super();
 	this.scene = scene;
 }
-public abstract Color traceRay(Ray ray);
+public abstract Color traceRay(List<Ray> ray);
 }
 

@@ -128,6 +128,8 @@ public class ReflectionRefractionTests {
 	
 	@Test
     public void tempTest() {
+		Camera.NUBER_OF_RAYS = 50;
+		Camera.RADIUS = 0.0001;
         Camera camera = new Camera(new Point3D(0, 0, 1000), new Vector(0, 0, -1), new Vector(0, 1, 0)) //
                 .setViewPlaneSize(150, 150) //
                 .setDistance(1000);

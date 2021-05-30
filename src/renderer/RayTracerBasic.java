@@ -22,14 +22,31 @@ public class RayTracerBasic extends RayTracerBase {
 
 	@Override
 	/**
-	 * Receives a ray and returns the color in which it should paint the pixel
 	 * 
+	 * The function goes through the entire list of rays, and checks for each ray whether it has points of intersection
+	 * ,if the ray has points of intersection it reverses the nearest point of intersection and returns its color,
+     *Then the function make the whole list of colors of the points of intersection and returns their mean.
 	 * @param ray
 	 * @return color
 	 */
-	public Color traceRay(Ray ray) {
-		GeoPoint closestPoint = findClosestIntersection(ray);
-		return closestPoint == null ? Color.BLACK : calcColor(closestPoint, ray);
+	public Color traceRay(List<Ray> rays) {
+        double r = 0;
+        double g = 0;
+        double b = 0;
+        int count = 0;
+        for (Ray ray : rays) {
+            GeoPoint closestPoint = findClosestIntersection(ray);
+            if (closestPoint != null) {
+                Color color = calcColor(closestPoint, ray);
+                r += color.getColor().getRed();
+                g += color.getColor().getGreen();
+                b += color.getColor().getBlue();
+                count++;
+            }
+        }
+        return count == 0 ? Color.BLACK : new Color(r / count, g / count, b / count);
+//		GeoPoint closestPoint = findClosestIntersection(ray);
+//		return closestPoint == null ? Color.BLACK : calcColor(closestPoint, ray);
 	}
 
 	/**

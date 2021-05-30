@@ -29,7 +29,7 @@ public class ViewPlaneTests {
         int intersections = 0;
         for (int i = 0; i < HEIGHT; i++) {
             for (int j = 0; j < WIDTH; j++) {
-                Ray ray = camera.constructRayThroughPixel(WIDTH, HEIGHT, j, i);
+                Ray ray = camera.constructRayThroughPixel(WIDTH, HEIGHT, j, i).get(0);
                 List<Point3D> intersectionsList = intersectable.findIntsersections(ray);
                 if (intersectionsList != null)
                     intersections += intersectionsList.size();

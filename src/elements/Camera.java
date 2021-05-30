@@ -6,8 +6,15 @@ import primitives.Vector;
 
 import static primitives.Util.isZero;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
+
 
 public class Camera {
+	public static int NUBER_OF_RAYS = 0;
+	public static double RADIUS = 0.01;
+	
     private Point3D p;
     private Vector Vup, Vto, Vright;
     private double width;
@@ -50,7 +57,7 @@ public class Camera {
         return this;
     }
 
-    public Ray constructRayThroughPixel(int nX, int nY, int j, int i) {
+    public List<Ray> constructRayThroughPixel(int nX, int nY, int j, int i) {
         Point3D Pc = p.add(Vto.scale(distance));
         double Ry = height / nY;
         double Rx = width / nX;
@@ -62,7 +69,25 @@ public class Camera {
         if (!isZero(Yi)) Pij = Pij.add(Vup.scale(Yi));
 
         Vector Vij = Pij.subtract(p).normalize();
-        return new Ray(Vij, p);
+        return constructRayCone(new Ray(Vij, p));
+    }
+    /**
+     * The function gets a list of rays, and each time takes the ray and adds to it all the rays coming on the x, y, z axis
+     *  and adds to each ray a random number between radius and -radius
+     *  and adds it to the list of rays and creates a cone of all rays and returns the cone
+     * @param ray
+     * @return
+     */
+    public static List<Ray> constructRayCone(Ray ray) {
+        List<Ray> result = new ArrayList<>();
+        result.add(ray);
+        for (int i = 0; i < NUBER_OF_RAYS; i++) {
+            double x = ray.getDir().getHead().getX().getCoord() + ThreadLocalRandom.current().nextDouble(-RADIUS, RADIUS);
+            double y = ray.getDir().getHead().getY().getCoord() + ThreadLocalRandom.current().nextDouble(-RADIUS, RADIUS);
+            double z = ray.getDir().getHead().getZ().getCoord() + ThreadLocalRandom.current().nextDouble(-RADIUS, RADIUS);
+            result.add(new Ray(new Vector(x, y, z), ray.getP0()));
+        }
+        return result;
     }
 
 

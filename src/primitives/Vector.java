@@ -75,9 +75,9 @@ public Vector add(Vector other) {
  * @return
  */
 public Vector scale (double scalar) {
-	double x= head.x.coord;
-	double y= head.y.coord;
-	double z= head.z.coord;
+	double x= head.getX().coord;
+	double y= head.getY().coord;
+	double z= head.getZ().coord;
 	return new Vector (x*scalar, y*scalar, z*scalar);
 }
 /**
@@ -87,13 +87,13 @@ And returns the resulting new vector
  * @return
  */
 public double dotProduct (Vector other) {
-	double x1 = this.head.x.coord;
-	double y1 = this.head.y.coord;
-	double z1 = this.head.z.coord;
+	double x1 = this.head.getX().coord;
+	double y1 = this.head.getY().coord;
+	double z1 = this.head.getZ().coord;
 
-	double x2 = other.head.x.coord;
-	double y2 = other.head.y.coord;
-	double z2 = other.head.z.coord;
+	double x2 = other.head.getX().coord;
+	double y2 = other.head.getY().coord;
+	double z2 = other.head.getZ().coord;
 	return(x1*x2+y1*y2+z1*z2);
 }
 /**
@@ -102,13 +102,13 @@ public double dotProduct (Vector other) {
  * @return
  */
 public Vector crossProduct (Vector other) {
-	double x1 = this.head.x.coord;
-	double y1 = this.head.y.coord;
-	double z1 = this.head.z.coord;
+	double x1 = this.head.getX().coord;
+	double y1 = this.head.getY().coord;
+	double z1 = this.head.getZ().coord;
 
-	double x2 = other.head.x.coord;
-	double y2 = other.head.y.coord;
-	double z2 = other.head.z.coord;
+	double x2 = other.head.getX().coord;
+	double y2 = other.head.getY().coord;
+	double z2 = other.head.getZ().coord;
 	return new Vector (y1*z2-z1*y2,z1*x2-x1*z2,x1*y2-y1*x2);
 }
 /**

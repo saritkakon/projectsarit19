@@ -1,9 +1,9 @@
 package primitives;
 
 public class Point3D {
-	 final Coordinate x;
-	final Coordinate y;
-	final Coordinate z;
+	 private final Coordinate x;
+	private final Coordinate y;
+	private final Coordinate z;
 	public static Point3D ZERO = new Point3D(0, 0, 0);
 /**
  * A Point3D constant that represents the beginning of the axes.
@@ -33,12 +33,12 @@ public class Point3D {
 	 * @return
 	 */
 	public Vector subtract(Point3D other) {
-		double x1 = this.x.coord;
-		double y1 = this.y.coord;
-		double z1 = this.z.coord;
-		double x2 = other.x.coord;
-		double y2 = other.y.coord;
-		double z2 = other.z.coord;
+		double x1 = this.getX().coord;
+		double y1 = this.getY().coord;
+		double z1 = this.getZ().coord;
+		double x2 = other.getX().coord;
+		double y2 = other.getY().coord;
+		double z2 = other.getZ().coord;
 
 		return new Vector(x1 - x2, y1 - y2, z1 - z2);
 	}
@@ -49,7 +49,7 @@ public class Point3D {
  */
 	public Point3D add(Vector other) {
 
-		return new Point3D(this.x.coord +other.getHead().x.coord ,this.y.coord +other.getHead().y.coord , this.z.coord +other.getHead().z.coord );
+		return new Point3D(this.getX().coord +other.getHead().getX().coord ,this.getY().coord +other.getHead().getY().coord , this.getZ().coord +other.getHead().getZ().coord );
 	}
 	/**
 	 * The function adds a vector to a point and returns a new point
@@ -57,13 +57,13 @@ public class Point3D {
 	 * @return
 	 */
 	public double distanceSquared (Point3D other){
-		double x1 = this.x.coord;
-		double y1 = this.y.coord;
-		double z1 = this.z.coord;
+		double x1 = this.getX().coord;
+		double y1 = this.getY().coord;
+		double z1 = this.getZ().coord;
 
-		double x2 = other.x.coord;
-		double y2 = other.y.coord;
-		double z2 = other.z.coord;
+		double x2 = other.getX().coord;
+		double y2 = other.getY().coord;
+		double z2 = other.getZ().coord;
 		
 		return (x1-x2)*(x1-x2) + (y1-y2)*(y1-y2) + (z1-z2)*(z1-z2);
 	}
@@ -83,31 +83,37 @@ public class Point3D {
 		if (getClass() != obj.getClass())
 			return false;
 		Point3D other = (Point3D) obj;
-		if (x == null) {
-			if (other.x != null)
+		if (getX() == null) {
+			if (other.getX() != null)
 				return false;
-		} else if (!x.equals(other.x))
+		} else if (!getX().equals(other.getX()))
 			return false;
-		if (y == null) {
-			if (other.y != null)
+		if (getY() == null) {
+			if (other.getY() != null)
 				return false;
-		} else if (!y.equals(other.y))
+		} else if (!getY().equals(other.getY()))
 			return false;
-		if (z == null) {
-			if (other.z != null)
+		if (getZ() == null) {
+			if (other.getZ() != null)
 				return false;
-		} else if (!z.equals(other.z))
+		} else if (!getZ().equals(other.getZ()))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Point3D [x=" + x + ", y=" + y + ", z=" + z + "]";
+		return "Point3D [x=" + getX() + ", y=" + getY() + ", z=" + getZ() + "]";
 	}
-	public double getX() {
+	public Coordinate getX() {
 		// TODO Auto-generated method stub
-		return this.x.coord;
+		return x;
+	}
+	public Coordinate getY() {
+		return y;
+	}
+	public Coordinate getZ() {
+		return z;
 	}
 
 }
