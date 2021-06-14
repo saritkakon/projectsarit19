@@ -30,23 +30,19 @@ public class RayTracerBasic extends RayTracerBase {
 	 * @return color
 	 */
 	public Color traceRay(List<Ray> rays) {
-        double r = 0;
-        double g = 0;
-        double b = 0;
+        Color result = Color.BLACK;
         int count = 0;
         for (Ray ray : rays) {
             GeoPoint closestPoint = findClosestIntersection(ray);
             if (closestPoint != null) {
                 Color color = calcColor(closestPoint, ray);
-                r += color.getColor().getRed();
-                g += color.getColor().getGreen();
-                b += color.getColor().getBlue();
+                result = result.add(color);
                 count++;
             }
         }
-        return count == 0 ? Color.BLACK : new Color(r / count, g / count, b / count);
-//		GeoPoint closestPoint = findClosestIntersection(ray);
-//		return closestPoint == null ? Color.BLACK : calcColor(closestPoint, ray);
+        return count == 0 ? Color.BLACK : result.reduce(count);
+//		GeoPoint closestPoint = findClosestIntersection(rays.get(0));
+//		return closestPoint == null ? Color.BLACK : calcColor(closestPoint, rays.get(0));
 	}
 
 	/**

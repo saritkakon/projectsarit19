@@ -6,18 +6,18 @@ import java.util.stream.Collectors;
 import primitives.Point3D;
 import primitives.Ray;
 
-/**
- * @author saritkakon
- *
- */
-public interface Intersectable {
-	default List<Point3D> findIntsersections(Ray ray) {
+public abstract class Intersectable {
+	public List<Point3D> findIntsersections(Ray ray) {
 	    var geoList = findGeoIntersections(ray);
 	    return geoList == null ? null
 	                           : geoList.stream().map(gp -> gp.point).collect(Collectors.toList());
 	}
 
-	List<GeoPoint> findGeoIntersections(Ray ray);
+	// for the Mini Project 2
+	protected Box box;
+	public abstract Point3D getCenter();
+
+	abstract public List<GeoPoint> findGeoIntersections(Ray ray);
 	/**
 	 * A class that represents pairs of geometry and dot
 	 */
@@ -52,6 +52,4 @@ public interface Intersectable {
 			return true;
 		}
 	}
-	
-
 }
